@@ -1,0 +1,12 @@
+download the Grafana GPG key with wget, then pipe the output to apt-key. This will now add the key to your APT installation’s list of trusted keys, which will then allow you to download as well as verify the GPG-signed Grafana package.
+1. wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add
+In the above command, the option -q helps turn off the status update message for wget, and -O will give the file you downloaded to the terminal. These two options make sure to pipeline only the contents of the downloaded file to apt-key.
+2. sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
+add the Grafana repository to your APT sources
+3. sudo apt update 
+4. apt-cache policy grafana 
+5. sudo apt install grafana
+6. sudo systemctl start grafana-server
+7. sudo systemctl status grafana-server
+8. sudo systemctl enable grafana-server
+9. Access grafana via http://server_ip_address:3000
